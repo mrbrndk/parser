@@ -3,11 +3,12 @@ import time
 import datetime
 from bs4 import BeautifulSoup
 import os
+import telebot
 
 url = os.environ.get('URL')
 url_write = os.environ.get('URL_WRITE')
 url_reg = os.environ.get('URL_REG')
-data = {os.environ.get('CHECK'): '1'}
+data = {'check8': '1'}
 headers = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:70.0) Gecko/20100101 Firefox/70.0'}
 timeout = 5
 doctors = os.environ.get('DOCTORS').split(',')
@@ -15,6 +16,9 @@ lastName = os.environ.get('LAST_NAME').encode('windows-1251')
 firstName = os.environ.get('FIRST_NAME').encode('windows-1251')
 middleName = os.environ.get('MIDDLE_NAME').encode('windows-1251')
 birthday = os.environ.get('BIRTHDAY')
+token = os.environ.get('TOKEN')
+chat_id = os.environ.get('CHAT_ID')
+bot = telebot.TeleBot(token)
 
 print('##### НАЧАЛО РАБОТЫ #####')
 while True:
@@ -62,6 +66,7 @@ while True:
                                     soup = BeautifulSoup(r.text, "html.parser")
                                     attr = soup.find('table', width='100%')
                                     print(attr.text)
+                                    bot.send_message(chat_id, attr.text)
                                     exit()
                                 else:
                                     print(r.status_code + ' !!!!! ОШИБКА ЗАПРОСА К ФОРМЕ РЕЗУЛЬТАТА !!!!!')
