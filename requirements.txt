@@ -11,6 +11,7 @@ lazy-object-proxy==1.4.3
 mccabe==0.6.1
 pycparser==2.20
 pylint==2.5.2
+pyTelegramBotAPI==3.7.3
 requests==2.23.0
 six==1.15.0
 soupsieve==2.0
