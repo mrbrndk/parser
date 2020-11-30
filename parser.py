@@ -8,7 +8,7 @@ import telebot
 url = os.environ.get('URL')
 url_write = os.environ.get('URL_WRITE')
 url_reg = os.environ.get('URL_REG')
-data = {'check8': '1'}
+data = {os.environ.get('CHECK'): '1'}
 headers = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:70.0) Gecko/20100101 Firefox/70.0'}
 timeout = 5
 doctors = os.environ.get('DOCTORS').split(',')
